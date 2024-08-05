@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=inter);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,4 +16,9 @@
     --color-text-light: #E4E4E4;
     --color-text-medium: #C0C0C0;
     --color-text-dark: #8F8F8F;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-light);
 }
