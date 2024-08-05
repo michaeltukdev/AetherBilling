@@ -6,7 +6,23 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'background': 'var(--color-background)',
+        'surface': 'var(--color-surface)',
+        'border': 'var(--color-border)',
+        'input-border': 'var(--color-input-border)',
+        'accent': {
+          light: 'var(--color-accent-light)',
+          DEFAULT: 'var(--color-accent)',
+        },
+        'text': {
+          light: 'var(--color-text-light)',
+          medium: 'var(--color-text-medium)',
+          dark: 'var(--color-text-dark)',
+        },
+      },
+    },
   },
   plugins: [],
 }

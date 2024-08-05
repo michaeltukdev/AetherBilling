@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-background: #21282F;
+    --color-surface: #2B343D;
+    --color-border: #35404C;
+    --color-input-border: #36424E;
+
+    --color-accent-light: #BFEE9C;
+    --color-accent: #A9D18B;
+
+    --color-text-light: #E4E4E4;
+    --color-text-medium: #C0C0C0;
+    --color-text-dark: #8F8F8F;
+}
