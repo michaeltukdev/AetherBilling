@@ -7,6 +7,13 @@ export default {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: '1.5rem',
+      },
+      fontSize: {
+        '15': '15px',
+      },
       colors: {
         'background': 'var(--color-background)',
         'surface': 'var(--color-surface)',
