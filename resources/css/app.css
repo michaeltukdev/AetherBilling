@@ -7,6 +7,7 @@
 :root {
     --color-background: #21282F;
     --color-surface: #2B343D;
+    --color-surface-accent: #35404C;
     --color-border: #35404C;
     --color-input-border: #3d4c5a;
 
@@ -21,4 +22,8 @@
 body {
     font-family: 'Inter', sans-serif;
     color: var(--color-text-light);
+}
+
+.slick-slide > div {
+    margin: 0 10px;
 }

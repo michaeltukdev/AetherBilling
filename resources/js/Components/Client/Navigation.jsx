@@ -18,7 +18,6 @@ export default function Navigation() {
                     <NavigationLink title="Services" path="/" />
                     <NavigationLink title="Support" path="/" />
                 </ul>
-                
             </div>
         </nav>
     )

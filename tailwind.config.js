@@ -17,6 +17,7 @@ export default {
       colors: {
         'background': 'var(--color-background)',
         'surface': 'var(--color-surface)',
+        'surface-accent': 'var(--color-surface-accent)',
         'border': 'var(--color-border)',
         'input-border': 'var(--color-input-border)',
         'accent': {
