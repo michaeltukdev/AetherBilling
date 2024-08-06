@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function MainInput({ label, required, type, value, onChange, error }) {
+export default function MainInput({ label, required, type, value, onChange, error, placeholder }) {
     return (
         <div>
             {label && (
@@ -12,16 +12,17 @@ export default function MainInput({ label, required, type, value, onChange, erro
 
             <input 
                 className={`w-full mt-3.5 bg-border border rounded-lg text-text-medium text-xs font-normal py-3 px-3.5 outline-none ${
-                    error ? 'border-red-500' : 'border-input-border'
+                    error ? 'border-red-300' : 'border-input-border'
                 }`}
                 type={type || "text"}
+                placeholder={placeholder || ""}
                 name={label}
                 id={label}
                 value={value}
                 onChange={onChange}
             />
 
-            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+            {error && <p className="text-red-300 text-xs mt-1">{error}</p>}
         </div>
     )
 }

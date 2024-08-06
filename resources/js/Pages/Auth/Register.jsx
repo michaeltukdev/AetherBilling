@@ -4,6 +4,7 @@ import Stage from "../../Components/Auth/Register/Stage";
 import MainInput from "../../Components/Inputs/MainInput";
 import FlashMessage from "../../Components/FlashMessage";
 import { registerStages as stages } from "../../Data/registerStages";
+import { Link } from '@inertiajs/react'
 
 export default function Register() {
     const [currentStage, setCurrentStage] = useState(1);
@@ -21,7 +22,7 @@ export default function Register() {
 
     const validateStage = () => {
         const currentStageFields = currentStageData.fields;
-        return currentStageFields.every(field => 
+        return currentStageFields.every(field =>
             !field.required || data[field.name]?.trim()
         ) && (currentStage !== 2 || data.password === data.password_confirmation);
     };
@@ -29,7 +30,7 @@ export default function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setStageAttempted(prev => ({ ...prev, [currentStage]: true }));
-        
+
         if (validateStage()) {
             if (currentStage < stages.length) {
                 setCurrentStage(prev => prev + 1);
@@ -66,7 +67,7 @@ export default function Register() {
                         <div className="bg-surface rounded-3xl p-8">
                             <h1 className="text-lg font-medium">{currentStageData.title}</h1>
                             <h5 className="text-15 font-medium text-text-medium mt-3.5">{currentStageData.description}</h5>
-                           
+
                             <div className="mt-10 grid md:grid-cols-2 gap-8">
                                 {currentStageData.fields.map((field) => (
                                     <MainInput
@@ -83,15 +84,19 @@ export default function Register() {
                         <div className="flex items-center justify-between mt-10">
                             <Stage stages={stages.length.toString()} stage={currentStage} />
 
-                            <div className="flex gap-4">
-                                <button
-                                    type="button"
-                                    className="bg-surface hover:bg-border transition py-2.5 px-10 rounded-lg font-medium text-15"
-                                    onClick={() => setCurrentStage(prev => Math.max(1, prev - 1))}
-                                    disabled={currentStage === 1}
-                                >
-                                    Back
-                                </button>
+                            <div className="flex gap-4 items-center" >
+                                {currentStage > 1 ? (
+                                    <button
+                                        type="button"
+                                        className="bg-surface hover:bg-border transition py-2.5 px-10 rounded-lg font-medium text-15"
+                                        onClick={() => setCurrentStage(prev => Math.max(1, prev - 1))}
+                                        disabled={currentStage === 1}
+                                    >
+                                        Back
+                                    </button>
+                                ) : (
+                                    <p className="text-15 text-text-dark font-medium">Have an account? <Link className="text-accent hover:text-accent-light transition" href="/auth/login">Login</Link></p>
+                                )}
                                 <button
                                     type="submit"
                                     className="bg-accent text-background hover:bg-accent-light transition py-2.5 px-10 rounded-lg font-medium text-15"
