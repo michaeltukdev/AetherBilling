@@ -19,7 +19,7 @@ const NavItem = ({ item: { dropdown, label, icon: Icon, href } }) => (
 );
 
 const Sidebar = ({ isMobile, setSidebarOpen }) => {
-    const { user } = usePage().props;
+    const { auth } = usePage().props;
 
     return (
         <motion.aside
@@ -46,10 +46,10 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
             </nav>
 
             <div className="mt-auto mb-4 flex items-center p-2.5 rounded-lg bg-border">
-                <img src={user.avatar || "/images/default/avatar.jpg"} alt="User Avatar" className="w-8 h-8 rounded-full mr-3" />
+                <img src={auth.user.avatar || "/images/default/avatar.jpg"} alt="User Avatar" className="w-8 h-8 rounded-full mr-3" />
                 <div className="flex-grow">
-                    <p className="font-medium text-sm">{user.name}</p>
-                    <p className="text-text-medium text-xs">{user.email}</p>
+                    <p className="font-medium text-sm">{auth.user.name}</p>
+                    <p className="text-text-medium text-xs">{auth.user.email}</p>
                 </div>
                 <Link href="/auth/logout">
                     <HiOutlineLogout className="text-xl text-text-medium cursor-pointer" />
