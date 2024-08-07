@@ -51,7 +51,9 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
                     <p className="font-medium text-sm">{user.name}</p>
                     <p className="text-text-medium text-xs">{user.email}</p>
                 </div>
-                <HiOutlineLogout className="text-xl text-text-medium cursor-pointer" />
+                <Link href="/auth/logout">
+                    <HiOutlineLogout className="text-xl text-text-medium cursor-pointer" />
+                </Link>
             </div>
         </motion.aside>
     );
