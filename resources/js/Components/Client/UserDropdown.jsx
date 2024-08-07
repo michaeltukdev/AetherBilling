@@ -1,15 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 
-const UserDropdown = ({ user }) => {
-    user = {
-        name: "Michael Tilley",
-        status: "New Customer",
-        avatarUrl: "/images/default/avatar.jpg"
-    };
-
+const authDropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -28,14 +22,15 @@ const UserDropdown = ({ user }) => {
         };
     }, []);
 
+    const { auth } = usePage().props;
+
     return (
         <div className="relative" ref={dropdownRef}>
             <div className="py-1 pl-2 pr-3 bg-input-border rounded-full flex items-center gap-2.5 max-w-full cursor-pointer" onClick={toggleDropdown}>
-                <img width="32" height="32" className="rounded-full flex-shrink-0" src={user.avatarUrl || "/images/default/avatar.jpg"} alt={`${user.name}'s avatar`} />
+                <img width="32" height="32" className="rounded-full flex-shrink-0" src={auth.user.avatar || "/images/default/avatar.jpg"} alt={`${auth.user.name}'s avatar`} />
 
                 <div className="flex-grow min-w-0">
-                    <p className="text-sm font-medium truncate">{user.name}</p>
-                    <p className="text-[11px] font-normal text-text-medium">{user.status}</p>
+                    <p className="text-sm font-medium truncate">{auth.user.name}</p>
                 </div>
 
                 <HiChevronDown className={`flex-shrink-0 ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -68,4 +63,4 @@ const UserDropdown = ({ user }) => {
     );
 };
 
-export default UserDropdown;
+export default authDropdown;
