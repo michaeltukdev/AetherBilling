@@ -1,4 +1,4 @@
-import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
+import { HiOutlineHome, HiOutlineUsers, HiOutlineCreditCard, HiOutlineSupport, HiOutlineCog } from "react-icons/hi";
 
 const navItems = [
     {
@@ -17,7 +17,7 @@ const navItems = [
         ]
     },
     {
-        icon: HiOutlineUsers,
+        icon: HiOutlineCreditCard,
         label: 'Billing',
         href: '/admin/billing',
         dropdown: [
@@ -25,7 +25,7 @@ const navItems = [
         ]
     },
     {
-        icon: HiOutlineUsers,
+        icon: HiOutlineSupport,
         label: 'Support',
         href: '/clients',
         dropdown: [
@@ -33,7 +33,7 @@ const navItems = [
         ]
     },
     {
-        icon: HiOutlineUsers,
+        icon: HiOutlineCog,
         label: 'Settings',
         href: '/admin/settings/',
     },
