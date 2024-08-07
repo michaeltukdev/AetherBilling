@@ -32,4 +32,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         return Inertia::render('Admin/Clients');
     })->name('admin.clients');
 
+    Route::get('settings', function () {
+        return Inertia::render('Admin/Settings/Settings');
+    })->name('admin.settings');
 });

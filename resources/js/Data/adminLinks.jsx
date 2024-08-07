@@ -35,10 +35,7 @@ const navItems = [
     {
         icon: HiOutlineUsers,
         label: 'Settings',
-        href: '/clients',
-        dropdown: [
-            { label: 'Client Groups', href: '/client-groups' },
-        ]
+        href: '/admin/settings/',
     },
 ];
 
