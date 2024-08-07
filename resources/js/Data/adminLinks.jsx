@@ -16,6 +16,30 @@ const navItems = [
             { label: 'Client Groups', href: '/client-groups' },
         ]
     },
+    {
+        icon: HiOutlineUsers,
+        label: 'Billing',
+        href: '/admin/billing',
+        dropdown: [
+            { label: 'Client Groups', href: '/client-groups' },
+        ]
+    },
+    {
+        icon: HiOutlineUsers,
+        label: 'Support',
+        href: '/clients',
+        dropdown: [
+            { label: 'Client Groups', href: '/client-groups' },
+        ]
+    },
+    {
+        icon: HiOutlineUsers,
+        label: 'Settings',
+        href: '/clients',
+        dropdown: [
+            { label: 'Client Groups', href: '/client-groups' },
+        ]
+    },
 ];
 
 export default navItems;

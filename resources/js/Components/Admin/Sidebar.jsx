@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, usePage } from '@inertiajs/react';
 import Dropdown from './Dropdown';
 import navItems from '../../Data/adminLinks';
 import { HiOutlineX, HiOutlineSearch, HiOutlineLogout } from "react-icons/hi";
 
-const NavItem = ({ item: { dropdown, label, icon: Icon, href } }) => (
+const NavItem = ({ item: { dropdown, label, icon: Icon, href }, activeDropdown, setActiveDropdown }) => (
     <li>
         {dropdown ? (
-            <Dropdown label={label} icon={Icon} items={dropdown} />
+            <Dropdown 
+                label={label} 
+                icon={Icon} 
+                items={dropdown} 
+                isOpen={activeDropdown === label}
+                onClick={() => setActiveDropdown(activeDropdown === label ? null : label)}
+            />
         ) : (
             <Link href={href} className="text-text-medium w-full p-2.5 rounded-lg leading-none flex items-center transition hover:bg-border">
                 <Icon className="mr-2 text-lg" />
@@ -20,6 +26,7 @@ const NavItem = ({ item: { dropdown, label, icon: Icon, href } }) => (
 
 const Sidebar = ({ isMobile, setSidebarOpen }) => {
     const { auth } = usePage().props;
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     return (
         <motion.aside
@@ -40,7 +47,12 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
 
                 <ul className="space-y-4 mt-5 text-15 font-medium">
                     {navItems.map((item, index) => (
-                        <NavItem key={index} item={item} />
+                        <NavItem 
+                            key={index} 
+                            item={item} 
+                            activeDropdown={activeDropdown}
+                            setActiveDropdown={setActiveDropdown}
+                        />
                     ))}
                 </ul>
             </nav>
