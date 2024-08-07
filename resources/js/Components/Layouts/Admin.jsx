@@ -4,8 +4,8 @@ import Sidebar from '../Admin/Sidebar';
 import { HiOutlineMenu } from "react-icons/hi";
 
 export default function AdminLayout({ children }) {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 900);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -33,7 +33,7 @@ export default function AdminLayout({ children }) {
                     )}
                 </header>
 
-                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-background p-4">{children}</main>
+                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-background px-12 pt-16">{children}</main>
             </div>
 
             <AnimatePresence>
