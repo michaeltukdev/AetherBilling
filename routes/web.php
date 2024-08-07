@@ -25,7 +25,13 @@ Route::prefix('client')->middleware('auth')->group(function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
     
     Route::get('overview', function () {
-        return Inertia::render('Admin/Overview');
+        return Inertia::render('Admin/Overview', [
+            'user' => [
+                'name' => auth()->user()->forename . ' ' . auth()->user()->surname,
+                'email' => auth()->user()->email,
+                'avatar' => auth()->user()->avatar_url,
+            ],
+        ]);
     })->name('admin.home');
 
     Route::get('clients', function () {
