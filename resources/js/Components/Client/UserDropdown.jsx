@@ -3,7 +3,7 @@ import { HiChevronDown } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, usePage } from '@inertiajs/react';
 
-const authDropdown = () => {
+const AuthDropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -50,7 +50,9 @@ const authDropdown = () => {
                                 <Link>Profile</Link>
                             </li>
                             <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                <Link>Profile</Link>
+                                <Link href="/admin/overview">
+                                    Admin Panel
+                                </Link>
                             </li>
                             <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
                                 <Link href="/auth/logout">Logout</Link>
@@ -63,4 +65,4 @@ const authDropdown = () => {
     );
 };
 
-export default authDropdown;
+export default AuthDropdown;

@@ -17,7 +17,8 @@ export default function Settings() {
             <h1 className="text-2xl font-medium">Settings Overview</h1>
             <p className="mt-2 font-base text-text-medium">Click one of the links below to go to the related settings</p>
 
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4">
+
                 <SettingsLink
                     path="/admin/settings/general"
                     title="General Settings"

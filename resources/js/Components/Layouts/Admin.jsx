@@ -4,8 +4,8 @@ import Sidebar from '../Admin/Sidebar';
 import { HiOutlineMenu } from "react-icons/hi";
 
 export default function AdminLayout({ children }) {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 900);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
+    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1000);
 
     useEffect(() => {
         const checkMobile = () => {
