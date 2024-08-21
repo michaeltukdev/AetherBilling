@@ -33,19 +33,8 @@ class ServersController extends Controller
 
     public function CreateServer(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:3|string',
-            'hostname' => 'nullable|string',
-            'ip_address' => 'nullable|ip',
-            'monthly_cost' => 'nullable|numeric',
-            'max_accounts' => 'nullable|integer',
-            'port' => 'nullable|integer',
-            'nameservers' => 'nullable|json',
-            'module_id' => 'required|string',
-            'module_username' => 'nullable|string',
-            'module_password' => 'nullable|string',
-            'module_api_token' => 'nullable|string',
-        ]);
+        $rules = $this->getValidationRules();
+        $validated = $request->validate([$rules]);
 
         Server::create($validated);
 
@@ -54,19 +43,8 @@ class ServersController extends Controller
 
     public function TestConnection(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|min:3|string',
-            'hostname' => 'nullable|string',
-            'ip_address' => 'nullable|ip',
-            'monthly_cost' => 'nullable|numeric',
-            'max_accounts' => 'nullable|integer',
-            'port' => 'nullable|integer',
-            'nameservers' => 'nullable|json',
-            'module_id' => 'required|string',
-            'module_username' => 'nullable|string',
-            'module_password' => 'nullable|string',
-            'module_api_token' => 'nullable|string',
-        ]);
+        $rules = $this->getValidationRules();
+        $validated = $request->validate($rules);
 
         $module = Module::find($validated['module_id']);
 
@@ -84,5 +62,22 @@ class ServersController extends Controller
         } catch (Exception $e) {
             return back()->with('error', 'Connection failed: ' . $e->getMessage());
         }
+    }
+
+    private function getValidationRules(): array
+    {
+        return [
+            'name' => 'required|min:3|string',
+            'hostname' => 'nullable|string',
+            'ip_address' => 'nullable|ip|required_without:hostname',
+            'monthly_cost' => 'nullable|numeric',
+            'max_accounts' => 'nullable|integer',
+            'port' => 'nullable|integer',
+            'nameservers' => 'nullable|json',
+            'module_id' => 'required|string',
+            'module_username' => 'nullable|string|required_without:module_api_token',
+            'module_password' => 'nullable|string|required_without:module_api_token',
+            'module_api_token' => 'nullable|string',
+        ];
     }
 }
