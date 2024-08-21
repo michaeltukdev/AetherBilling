@@ -1,11 +1,12 @@
 <?php
 
 use Inertia\Inertia;
+use App\Models\Module;
+use App\Models\Server;
+use App\Services\ModuleService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
-use App\Models\Module;
-use App\Services\ModuleService;
-use App\Models\Server;
+use App\Http\Controllers\ServersController;
 
 Route::prefix('auth')->controller(Authentication::class)->group(function () {
     Route::group(['middleware' => 'guest'], function () {
@@ -36,6 +37,12 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     })->name('admin.clients');
 
     Route::inertia('settings', 'Admin/Settings/Settings')->name('admin.settings');
+
+    Route::get('/settings/servers', [ServersController::class, 'ServersView'])->name('admin.servers.index');
+
+    Route::get('/settings/servers/create', [ServersController::class, 'CreateView'])->name('admin.settings.servers.create');
+    Route::post('/settings/servers/create', [ServersController::class, 'CreateServer']);
+    Route::post('/settings/servers/test-connection', [ServersController::class, 'TestConnection']);
 });
 
 Route::get('/', function () {

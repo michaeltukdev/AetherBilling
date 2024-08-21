@@ -26,7 +26,7 @@ export default function Settings() {
                 />
 
                 <SettingsLink
-                    path="/admin/settings/general"
+                    path="/admin/settings/servers"
                     title="Servers"
                     description="Add, edit or manage your connected servers."
                 />

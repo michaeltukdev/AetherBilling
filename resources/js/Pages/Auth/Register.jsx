@@ -49,7 +49,6 @@ export default function Register() {
 
     useEffect(() => {
         if (stageAttempted[currentStage]) {
-            // Any additional checks or actions can be performed here
         }
     }, [data, errors, serverErrors, currentStage, stageAttempted]);
 

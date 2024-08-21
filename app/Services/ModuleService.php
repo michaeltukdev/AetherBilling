@@ -5,7 +5,6 @@ namespace App\Services;
 use Exception;
 use App\Models\Server;
 use App\Modules\CpanelModule;
-use App\Factories\ModuleFactory;
 use App\Modules\PterodactylModule;
 
 class ModuleService
