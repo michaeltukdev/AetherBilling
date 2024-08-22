@@ -34,7 +34,7 @@ class ServersController extends Controller
     public function CreateServer(Request $request)
     {
         $rules = $this->getValidationRules();
-        $validated = $request->validate([$rules]);
+        $validated = $request->validate($rules);
 
         Server::create($validated);
 
