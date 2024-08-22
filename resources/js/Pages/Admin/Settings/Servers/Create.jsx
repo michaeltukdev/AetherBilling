@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { router, useForm, usePage } from "@inertiajs/react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
 import GoBack from "../../../../Components/Admin/GoBack"
-import MainInput from "../../../../Components/Inputs/MainInput"
+import MainInput from "../../../../Components/ui/inputs/MainInput"
 import SelectInput from "../../../../Components/Inputs/SelectInput"
 import SettingsContainer from "../../../../Components/Admin/SettingsContainer"
 import FlashMessage from "../../../../Components/FlashMessage"
@@ -61,20 +61,20 @@ export default function CreateServer() {
 
             <form onSubmit={handleSubmit}>
                 <SettingsContainer>
-                    <MainInput value={data.name} id="name" label="Server Name" required placeholder="Enter server name" type="text" onChange={e => handleInputChange('name', e.target.value)} error={serverErrors.name} />
-                    <MainInput value={data.hostname} id="hostname" label="Hostname" placeholder="Enter hostname" type="text" onChange={e => handleInputChange('hostname', e.target.value)} error={serverErrors.hostname} />
-                    <MainInput value={data.ip_address} id="ip_address" label="IP Address" placeholder="Enter IP address" type="text" onChange={e => handleInputChange('ip_address', e.target.value)} error={serverErrors.ip_address} />
-                    <MainInput value={data.monthly_cost} id="monthly_cost" label="Monthly Cost" placeholder="Enter monthly cost" type="number" onChange={e => handleInputChange('monthly_cost', e.target.value)} error={serverErrors.monthly_cost} />
-                    <MainInput value={data.max_accounts} id="max_accounts" label="Max Accounts" placeholder="Enter max accounts" type="number" onChange={e => handleInputChange('max_accounts', e.target.value)} error={serverErrors.max_accounts} />
-                    <MainInput value={data.port} id="port" label="Port" placeholder="Enter port number" type="number" onChange={e => handleInputChange('port', e.target.value)} error={serverErrors.port} />
+                    <MainInput className="w-full" value={data.name} id="name" label="Server Name" required placeholder="Enter server name" type="text" onChange={e => handleInputChange('name', e.target.value)} error={serverErrors.name} />
+                    <MainInput className="w-full" value={data.hostname} id="hostname" label="Hostname" placeholder="Enter hostname" type="text" onChange={e => handleInputChange('hostname', e.target.value)} error={serverErrors.hostname} />
+                    <MainInput className="w-full" value={data.ip_address} id="ip_address" label="IP Address" placeholder="Enter IP address" type="text" onChange={e => handleInputChange('ip_address', e.target.value)} error={serverErrors.ip_address} />
+                    <MainInput className="w-full" value={data.monthly_cost} id="monthly_cost" label="Monthly Cost" placeholder="Enter monthly cost" type="number" onChange={e => handleInputChange('monthly_cost', e.target.value)} error={serverErrors.monthly_cost} />
+                    <MainInput className="w-full" value={data.max_accounts} id="max_accounts" label="Max Accounts" placeholder="Enter max accounts" type="number" onChange={e => handleInputChange('max_accounts', e.target.value)} error={serverErrors.max_accounts} />
+                    <MainInput className="w-full" value={data.port} id="port" label="Port" placeholder="Enter port number" type="number" onChange={e => handleInputChange('port', e.target.value)} error={serverErrors.port} />
                 </SettingsContainer>
 
                 <SettingsContainer>
-                    <MainInput value={data.nameservers} id="nameservers" label="Nameservers" placeholder="Enter nameservers (JSON format)" type="text" onChange={e => handleInputChange('nameservers', e.target.value)} error={serverErrors.nameservers} />
+                    <MainInput className="w-full" value={data.nameservers} id="nameservers" label="Nameservers" placeholder="Enter nameservers (JSON format)" type="text" onChange={e => handleInputChange('nameservers', e.target.value)} error={serverErrors.nameservers} />
                     <SelectInput label="Module" name="module_id" value={data.module_id} onChange={(value) => handleInputChange('module_id', value)} options={modules.map(module => ({ value: module.id, label: module.name }))} error={serverErrors.module_id} placeholder="Select Module" />
-                    <MainInput value={data.module_username} id="module_username" label="Module Username" placeholder="Enter module username" type="text" onChange={e => handleInputChange('module_username', e.target.value)} error={serverErrors.module_username} />
-                    <MainInput value={data.module_password} id="module_password" label="Module Password" placeholder="Enter module password" type="password" onChange={e => handleInputChange('module_password', e.target.value)} error={serverErrors.module_password} />
-                    <MainInput value={data.module_api_token} id="module_api_token" label="Module API Token" placeholder="Enter module API token" type="text" onChange={e => handleInputChange('module_api_token', e.target.value)} error={serverErrors.module_api_token} />
+                    <MainInput className="w-full" value={data.module_username} id="module_username" label="Module Username" placeholder="Enter module username" type="text" onChange={e => handleInputChange('module_username', e.target.value)} error={serverErrors.module_username} />
+                    <MainInput className="w-full" value={data.module_password} id="module_password" label="Module Password" placeholder="Enter module password" type="password" onChange={e => handleInputChange('module_password', e.target.value)} error={serverErrors.module_password} />
+                    <MainInput className="w-full" value={data.module_api_token} id="module_api_token" label="Module API Token" placeholder="Enter module API token" type="text" onChange={e => handleInputChange('module_api_token', e.target.value)} error={serverErrors.module_api_token} />
                 </SettingsContainer>
 
                 <div className="flex justify-end gap-4 items-center">

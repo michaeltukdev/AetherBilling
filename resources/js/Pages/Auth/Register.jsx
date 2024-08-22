@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm, usePage } from "@inertiajs/react";
 import Stage from "../../Components/Auth/Register/Stage";
-import MainInput from "../../Components/Inputs/MainInput";
+import MainInput from "../../Components/ui/inputs/MainInput";
 import FlashMessage from "../../Components/FlashMessage";
 import { registerStages as stages } from "../../Data/registerStages";
 import { Link } from '@inertiajs/react'
@@ -70,6 +70,7 @@ export default function Register() {
                             <div className="mt-10 grid md:grid-cols-2 gap-8">
                                 {currentStageData.fields.map((field) => (
                                     <MainInput
+                                        className='w-full'
                                         key={field.name}
                                         {...field}
                                         value={data[field.name]}

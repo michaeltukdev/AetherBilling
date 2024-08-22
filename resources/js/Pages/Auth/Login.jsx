@@ -1,5 +1,5 @@
 import React from 'react'
-import MainInput from '../../Components/Inputs/MainInput'
+import MainInput from '../../Components/ui/inputs/MainInput';
 import CheckboxInput from '../../Components/Inputs/CheckboxInput'
 import { Link, useForm } from '@inertiajs/react'
 
@@ -23,9 +23,9 @@ export default function Login() {
 
                     <div className="bg-surface rounded-3xl mt-10">
                         <div className="p-8 space-y-8">
-                            <MainInput label="Email" name="email" required placeholder="Email" type="email" error={errors.email} value={data.email} onChange={e => setData('email', e.target.value)} />
+                            <MainInput className='w-full' label="Email" name="email" required placeholder="Email" type="email" error={errors.email} value={data.email} onChange={e => setData('email', e.target.value)} />
                        
-                            <MainInput label="Password" name="password" required placeholder="Password" type="password" error={errors.password} value={data.password} onChange={e => setData('password', e.target.value)} />
+                            <MainInput className='w-full' label="Password" name="password" required placeholder="Password" type="password" error={errors.password} value={data.password} onChange={e => setData('password', e.target.value)} />
 
                             <CheckboxInput label="Remember Me" name="remember" checked={data.remember} onChange={e => setData('remember', e.target.checked)} error={errors.remember} />
 
