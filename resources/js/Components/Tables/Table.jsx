@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useReactTable, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, flexRender } from '@tanstack/react-table';
 import { TableBase, TableHead, TableBody, TableRow, TableCell, TableHeaderCell } from '../ui/table';
-import Button from '../ui/buttons';
-import MainInput from '../ui/inputs/MainInput';
-import SelectInput from '../Inputs/SelectInput';
+import Button from '../ui/Buttons/Button';
+import MainInput from '../ui/Inputs/MainInput';
+import SelectInput from '../ui/Inputs/SelectInput';
 
 export default function Table({ columns, data: initialData }) {
     const [globalFilter, setGlobalFilter] = useState('');

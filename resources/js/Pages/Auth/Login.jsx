@@ -1,6 +1,6 @@
 import React from 'react'
 import MainInput from '../../Components/ui/inputs/MainInput';
-import CheckboxInput from '../../Components/Inputs/CheckboxInput'
+import CheckboxInput from '../../Components/ui/inputs/CheckboxInput';
 import { Link, useForm } from '@inertiajs/react'
 
 export default function Login() {

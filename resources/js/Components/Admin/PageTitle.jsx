@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateLink from '../Buttons/CreateLink';
+import CreateLink from '../ui/Buttons/CreateButton';
 
 const PageTitle = ({ title, description, createLinkProps }) => {
   return (

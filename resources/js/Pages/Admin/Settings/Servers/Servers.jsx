@@ -1,6 +1,6 @@
 import React from "react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
-import GoBack from "../../../../Components/Admin/GoBack"
+import GoBack from "../../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../../Components/Admin/PageTitle"
 import Table from "../../../../Components/Tables/Table"
 import { usePage } from "@inertiajs/react"

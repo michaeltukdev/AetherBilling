@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { router, useForm, usePage } from "@inertiajs/react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
-import GoBack from "../../../../Components/Admin/GoBack"
-import MainInput from "../../../../Components/ui/inputs/MainInput"
-import SelectInput from "../../../../Components/Inputs/SelectInput"
+import GoBack from "../../../../Components/ui/Buttons/GoBack"
+import MainInput from "../../../../Components/ui/Inputs/MainInput"
+import SelectInput from "../../../../Components/ui/Inputs/SelectInput"
 import SettingsContainer from "../../../../Components/Admin/SettingsContainer"
 import FlashMessage from "../../../../Components/FlashMessage"
 import PageTitle from "../../../../Components/Admin/PageTitle"
-
-import Button from "../../../../Components/ui/buttons"
+import Button from "../../../../Components/ui/Buttons/Button"
 
 export default function CreateServer() {
     const { errors: serverErrors, modules, flash } = usePage().props;
