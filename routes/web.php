@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
@@ -28,9 +29,13 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::get('overview', function () {
         return Inertia::render('Admin/Overview');
     })->name('admin.home');
-
-    Route::get('clients', function () {
-        return Inertia::render('Admin/Clients');
+    
+    Route::get('clients', function() {
+        $user = User::select('id', 'forename', 'surname', 'email', 'created_at')->get();
+        
+        return Inertia::render('Admin/Clients/Index', [
+            'clients' => $user
+        ]);
     })->name('admin.clients');
 
     Route::inertia('settings', 'Admin/Settings/Settings')->name('admin.settings');
