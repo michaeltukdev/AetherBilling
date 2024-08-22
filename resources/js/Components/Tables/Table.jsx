@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useReactTable, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, flexRender } from '@tanstack/react-table';
 import { TableBase, TableHead, TableBody, TableRow, TableCell, TableHeaderCell } from '../ui/table';
-import Button from '../ui/Buttons/Button';
 import MainInput from '../ui/Inputs/MainInput';
 import SelectInput from '../ui/Inputs/SelectInput';
+import TablePagination from '../ui/Tables/TablePagination';
 
 export default function Table({ columns, data: initialData }) {
     const [globalFilter, setGlobalFilter] = useState('');
@@ -55,12 +55,7 @@ export default function Table({ columns, data: initialData }) {
             </TableBase>
 
             <div className="mt-4 flex items-center justify-between">
-                <div className='flex items-center gap-3'>
-                    <Button onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()} ariaLabel="Go to first page">{'<<'}</Button>
-                    <Button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()} ariaLabel="Go to previous page">{'<'}</Button>
-                    <Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()} ariaLabel="Go to next page">{'>'}</Button>
-                    <Button onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()} ariaLabel="Go to last page">{'>>'}</Button>
-                </div>
+                <TablePagination table={table} />
 
                 <SelectInput name="pageSize" value={table.getState().pagination.pageSize}
                     onChange={(value) => {
