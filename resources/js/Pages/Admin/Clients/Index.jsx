@@ -4,6 +4,7 @@ import AdminLayout from "../../../Components/Layouts/Admin"
 import GoBack from "../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../Components/Admin/PageTitle"
 import Table from "../../../Components/Tables/Table"
+import { formatDate } from "../../../Utils/FormatDate"
 
 const columns = [
     { accessorKey: 'id', header: 'ID' },
@@ -13,7 +14,7 @@ const columns = [
     {
         accessorKey: 'created_at',
         header: 'Created At',
-        cell: ({ row }) => row.original.created_at
+        cell: ({ row }) => formatDate(row.original.created_at)
     },
     {
         accessorKey: 'actions',
