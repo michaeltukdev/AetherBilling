@@ -7,7 +7,7 @@ import SelectInput from '../Inputs/SelectInput';
 
 export default function Table({ columns, data: initialData }) {
     const [globalFilter, setGlobalFilter] = useState('');
-    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 3 });
+    const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 15 });
 
     const table = useReactTable({
         data: initialData,

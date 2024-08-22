@@ -21,7 +21,11 @@ class ServersController extends Controller
 
     public function ServersView()
     {
-        return Inertia::render('Admin/Settings/Servers/Servers');
+        $servers = Server::with('module')->select('id', 'name', 'hostname', 'ip_address', 'module_id')->get();
+
+        return Inertia::render('Admin/Settings/Servers/Servers', [
+            'servers' => $servers
+        ]);
     }
 
     public function CreateView()
