@@ -68,6 +68,13 @@ class ServersController extends Controller
         }
     }
 
+    public function destroy(Server $server)
+    {
+        $server->delete();
+
+        return redirect()->back()->with('success', 'Server deleted successfully');
+    }
+
     private function getValidationRules(): array
     {
         return [

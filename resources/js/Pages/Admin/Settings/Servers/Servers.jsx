@@ -1,9 +1,10 @@
 import React from "react"
+import { usePage, router } from "@inertiajs/react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
 import GoBack from "../../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../../Components/Admin/PageTitle"
 import Table from "../../../../Components/Tables/Table"
-import { usePage } from "@inertiajs/react"
+import FlashMessage from "../../../../Components/FlashMessage"
 
 const columns = [
   { accessorKey: 'id', header: 'ID' },
@@ -16,24 +17,25 @@ const columns = [
     header: 'Actions',
     cell: ({ row }) => (
       <div className="flex gap-2">
-        {/* <p>Edit</p>
-        <p>Delete</p> */}
+
+        <button onClick={() => router.delete(`/admin/settings/servers/${row.original.id}`)} className="text-red-300 hover:text-red-500"> Delete </button>
       </div>
     )
   }
 ];
 
 export default function Servers() {
-    const { servers } = usePage().props;
+  const { servers, flash } = usePage().props;
 
-    return (
-        <AdminLayout>
-            <GoBack href="/admin/settings" />
+  return (
+    <AdminLayout>
+      <FlashMessage message={flash.success ?? flash.error} type={flash.success ? 'success' : 'error'} />
+      
+      <GoBack href="/admin/settings" />
 
-            <PageTitle title="Servers" description="Manage your servers here" createLinkProps={{ text: "Add server", href: "servers/create" }} />
+      <PageTitle title="Servers" description="Manage your servers here" createLinkProps={{ text: "Add server", href: "servers/create" }} />
 
-            <Table columns={columns} data={servers} />
-
-        </AdminLayout>
-    )
+      <Table columns={columns} data={servers} />
+    </AdminLayout>
+  )
 }
