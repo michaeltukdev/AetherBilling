@@ -1,9 +1,6 @@
 <?php
 
 use Inertia\Inertia;
-use App\Models\Module;
-use App\Models\Server;
-use App\Services\ModuleService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\ServersController;
@@ -47,19 +44,5 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 });
 
 Route::get('/', function () {
-    $module = Module::where('name', 'Pterodactyl')->first();
-
-    if ($module) {
-
-        $server = Server::where('id', 1)->first();
-        
-        $moduleService = new ModuleService();
-        $module = $moduleService->getModuleForServer($server);
-        $serverInfo = $module->makeApiCall('/api/application/servers');
-    }
-
-    return Inertia::render('Welcome', [
-        'module' => Module::all(),
-        'serverInfo' => $serverInfo ?? null
-    ]);
+    return Inertia::render('Welcome');
 })->name('home');
