@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm, usePage } from "@inertiajs/react";
 import Stage from "../../Components/Auth/Register/Stage";
-import MainInput from "../../Components/ui/inputs/MainInput";
+import MainInput from "../../Components/ui/Inputs/MainInput";
 import FlashMessage from "../../Components/FlashMessage";
 import { registerStages as stages } from "../../Data/registerStages";
 import { Link } from '@inertiajs/react'
