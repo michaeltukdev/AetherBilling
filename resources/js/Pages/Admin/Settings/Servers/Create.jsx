@@ -8,6 +8,8 @@ import SettingsContainer from "../../../../Components/Admin/SettingsContainer"
 import FlashMessage from "../../../../Components/FlashMessage"
 import PageTitle from "../../../../Components/Admin/PageTitle"
 
+import Button from "../../../../Components/ui/buttons"
+
 export default function CreateServer() {
     const { errors: serverErrors, modules, flash } = usePage().props;
     const [isTestingConnection, setIsTestingConnection] = useState(false);
@@ -60,6 +62,7 @@ export default function CreateServer() {
             <PageTitle title="Create Server" description="Fill in the form below to create a new server" />
 
             <form onSubmit={handleSubmit}>
+
                 <SettingsContainer>
                     <MainInput className="w-full" value={data.name} id="name" label="Server Name" required placeholder="Enter server name" type="text" onChange={e => handleInputChange('name', e.target.value)} error={serverErrors.name} />
                     <MainInput className="w-full" value={data.hostname} id="hostname" label="Hostname" placeholder="Enter hostname" type="text" onChange={e => handleInputChange('hostname', e.target.value)} error={serverErrors.hostname} />
@@ -78,21 +81,11 @@ export default function CreateServer() {
                 </SettingsContainer>
 
                 <div className="flex justify-end gap-4 items-center">
-                    <button onClick={handleTestConnection}
-                        className={`mt-6 text-sm py-2 px-4 rounded-lg transition ${isTestingConnection ? 'bg-gray-400 cursor-not-allowed' : 'bg-border hover:bg-input-border'}`}
-                        disabled={isTestingConnection} >
-
-                        {isTestingConnection ? 'Testing...' : 'Test Connection'}
-                    </button>
-
-                    <button
-                        disabled={!canCreate}
-                        type="submit"
-                        className={`mt-6 text-sm py-2 px-4 rounded-lg transition ${canCreate ? 'bg-accent text-background hover:bg-accent-light' : 'bg-gray-400 cursor-not-allowed'}`}
-                    >
-                        Create Server
-                    </button>
+                    <Button className="mt-6" onClick={handleTestConnection}> {isTestingConnection ? 'Testing...' : 'Test Connection'} </Button>
+                    
+                    <Button type="submit" className="mt-6" disabled={!canCreate}>Create Server</Button>
                 </div>
+
             </form>
         </AdminLayout>
     )
