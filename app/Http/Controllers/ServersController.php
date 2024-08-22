@@ -42,7 +42,7 @@ class ServersController extends Controller
 
         Server::create($validated);
 
-        return to_route('admin.servers.index');
+        return to_route('admin.servers.index')->with('success', 'Server created successfully');
     }
 
     public function TestConnection(Request $request)
