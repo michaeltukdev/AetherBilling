@@ -4,7 +4,7 @@ const navItems = [
     {
         icon: HiOutlineHome,
         label: 'Overview',
-        href: '/admin/overview'
+        href: '/admin/'
     },
     {
         icon: HiOutlineUsers,
