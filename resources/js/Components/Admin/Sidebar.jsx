@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, usePage } from '@inertiajs/react';
 import { HiOutlineX, HiOutlineSearch, HiOutlineLogout, HiChevronDown } from "react-icons/hi";
+import MainInput from "../ui/Inputs/MainInput"
 import navItems from '../../Data/adminLinks';
 
 const NavItem = ({ item: { dropdown, label, icon: Icon, href }, activeDropdown, setActiveDropdown }) => {
     const isActive = activeDropdown === label;
     return dropdown ? (
         <div className="relative">
-            <div onClick={() => setActiveDropdown(isActive ? null : label)} className="flex items-center justify-between p-2.5 rounded-lg hover:bg-border cursor-pointer text-text-medium">
+            <div onClick={() => setActiveDropdown(isActive ? null : label)} className="flex items-center justify-between p-2.5 rounded-lg text-sm hover:bg-border cursor-pointer text-text-medium">
                 <span className="flex items-center">
-                    <Icon className="mr-2 text-lg" /> {label}
+                    <Icon className="mr-2 text-15" /> {label}
                 </span>
                 <HiChevronDown className={`ml-2 transition-transform ${isActive ? 'rotate-180' : ''}`} />
             </div>
@@ -27,8 +28,8 @@ const NavItem = ({ item: { dropdown, label, icon: Icon, href }, activeDropdown, 
             )}
         </div>
     ) : (
-        <Link href={href} className="flex items-center p-2.5 rounded-lg hover:bg-border text-text-medium">
-            <Icon className="mr-2 text-lg" /> {label}
+        <Link href={href} className="flex items-center p-2.5 rounded-lg hover:bg-border text-sm text-text-medium">
+            <Icon className="mr-2 text-15" /> {label}
         </Link>
     );
 };
@@ -47,9 +48,9 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
             <nav className="mt-8 flex-grow">
                 <img className="mx-auto" width="60" src="/images/default/branding/logo.webp" alt="Logo" />
                 <div className="relative mt-8">
-                    <HiOutlineSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-text-medium" />
-                    <input placeholder="Search..." className="pl-10 p-3 rounded-lg w-full bg-border text-15 leading-none font-medium focus:outline-none" />
+                    <MainInput className='w-full' placeholder="Search..."  />
                 </div>
+
                 <ul className="space-y-4 mt-5 text-15 font-medium">
                     {navItems.map((item, index) => (
                         <li key={index}>
@@ -57,16 +58,19 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
                         </li>
                     ))}
                 </ul>
+            
             </nav>
             
-            <div className="mt-auto mb-4 flex items-center p-2.5 rounded-lg bg-border">
-                <img src={auth.user.avatar || "/images/default/avatar.jpg"} alt="User Avatar" className="w-8 h-8 rounded-full mr-3" />
+            <div className="mt-auto mb-4 flex items-center px-2.5 py-2 rounded-lg bg-border border border-input-border">
+                <img src={auth.user.avatar || "/images/default/avatar.jpg"} alt="User Avatar" className="w-7 h-7 rounded-full mr-3" />
+                
                 <div className="flex-grow">
-                    <p className="font-medium text-sm">{auth.user.name}</p>
+                    <p className="font-medium text-xs">{auth.user.name}</p>
                     <p className="text-text-medium text-xs">{auth.user.email}</p>
                 </div>
+                
                 <Link href="/auth/logout">
-                    <HiOutlineLogout className="text-xl text-text-medium cursor-pointer" />
+                    <HiOutlineLogout className="text-lg text-text-medium cursor-pointer" />
                 </Link>
             </div>
             
