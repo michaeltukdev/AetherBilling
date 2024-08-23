@@ -46,6 +46,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::post('/settings/servers/create', [ServersController::class, 'CreateServer']);
     Route::post('/settings/servers/test-connection', [ServersController::class, 'TestConnection']);
     Route::delete('/settings/servers/{server}', [ServersController::class, 'destroy'])->name('admin.settings.servers.delete');
+    Route::get('/settings/servers/{server}', [ServersController::class, 'updateView'])->name('admin.settings.servers.update');
 });
 
 Route::get('/', function () {

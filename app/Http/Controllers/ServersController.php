@@ -26,6 +26,14 @@ class ServersController extends Controller
         ]);
     }
 
+    public function updateView(Server $server)
+    {
+        return Inertia::render('Admin/Settings/Servers/Update', [
+            'server' => $server,
+            'modules' => Module::all()
+        ]);
+    }
+
     public function CreateServer(ServerRequest $request)
     {
         $validated = $request->validated();

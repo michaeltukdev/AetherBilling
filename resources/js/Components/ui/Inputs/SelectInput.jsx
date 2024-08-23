@@ -9,6 +9,7 @@ const SelectInput = ({ label, name, value, onChange, options, error, placeholder
         name={name} id={name} value={value} onChange={(e) => onChange(e.target.value)} required >
             
         <option value="">{placeholder}</option>
+        
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

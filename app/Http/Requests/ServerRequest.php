@@ -30,7 +30,7 @@ class ServerRequest extends FormRequest
             'max_accounts' => 'nullable|integer',
             'port' => 'nullable|integer',
             'nameservers' => 'nullable|json',
-            'module_id' => 'required|string',
+            'module_id' => 'required|integer|exists:modules,id',
             'module_username' => 'nullable|string|required_without:module_api_token',
             'module_password' => 'nullable|string|required_without:module_api_token',
             'module_api_token' => 'nullable|string',

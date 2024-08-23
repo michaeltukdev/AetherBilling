@@ -1,5 +1,5 @@
 import React from "react"
-import { usePage, router } from "@inertiajs/react"
+import { usePage, router, Link } from "@inertiajs/react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
 import GoBack from "../../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../../Components/Admin/PageTitle"
@@ -17,6 +17,7 @@ const columns = [
     header: 'Actions',
     cell: ({ row }) => (
       <div className="flex gap-2">
+        <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
 
         <button onClick={() => router.delete(`/admin/settings/servers/${row.original.id}`)} className="text-red-300 hover:text-red-500"> Delete </button>
       </div>
