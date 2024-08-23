@@ -1,4 +1,5 @@
 import React from "react"
+import PageTitle from "../../../Components/Admin/PageTitle"
 import AdminLayout from "../../../Components/Layouts/Admin"
 import { Link } from "@inertiajs/react"
 
@@ -14,8 +15,7 @@ function SettingsLink({ path, title, description }) {
 export default function Settings() {
     return (
         <AdminLayout>
-            <h1 className="text-2xl font-medium">Settings Overview</h1>
-            <p className="mt-2 font-base text-text-medium">Click one of the links below to go to the related settings</p>
+            <PageTitle title="Settings Overview" description="Click one of the links below to go to the related settings" />
 
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4">
 

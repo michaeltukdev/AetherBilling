@@ -39,7 +39,7 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
     const [activeDropdown, setActiveDropdown] = useState(null);
 
     return (
-        <motion.aside initial={{ x: isMobile ? "-100%" : 0 }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ type: "spring", bounce: 0, duration: 0.4 }} className="fixed inset-y-0 left-0 z-50 w-[300px] bg-surface md:relative px-4 flex flex-col">
+        <motion.aside initial={{ x: isMobile ? "-100%" : 0 }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ type: "spring", bounce: 0, duration: 0.4 }} className="fixed inset-y-0 left-0 z-50 w-[280px] bg-surface md:relative px-4 flex flex-col">
             
             {isMobile && (
                 <HiOutlineX className='h-6 w-6 absolute top-4 right-4 cursor-pointer' onClick={() => setSidebarOpen?.(false)} />

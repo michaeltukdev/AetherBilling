@@ -2,7 +2,7 @@ import React from "react";
 
 export function TableBase({ children }) {
     return (
-        <table className="w-full border-collapse bg-border rounded-lg overflow-hidden">
+        <table className="w-full border-collapse bg-border rounded-lg overflow-hidden ">
             {children}
         </table>
     );
@@ -13,14 +13,14 @@ export function TableHead({ children }) {
 }
 
 export function TableBody({ children }) {
-    return <tbody className="bg-surface divide-y divide-border">{children}</tbody>;
+    return <tbody className="bg-surface divide-y divide-border text-sm">{children}</tbody>;
 }
 
 export function TableRow({ children, isLast }) {
     return (
         <tr className={`hover:bg-border transition ${isLast ? 'last:rounded-b-lg' : ''}`}>
             {React.Children.map(children, (child, index) => {
-                if (isLast) {
+                if (isLast) {f
                     if (index === 0) {
                         return React.cloneElement(child, { className: `${child.props.className} rounded-bl-lg` });
                     }
@@ -35,7 +35,7 @@ export function TableRow({ children, isLast }) {
 }
 
 export function TableCell({ children, className }) {
-    return <td className={`px-6 py-4 whitespace-nowrap ${className}`}>{children}</td>;
+    return <td className={`px-6 py-3.5 whitespace-nowrap ${className}`}>{children}</td>;
 }
 
 export function TableHeaderCell({ children }) {
