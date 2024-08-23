@@ -12,13 +12,6 @@ use App\Services\ServersService;
 
 class ServersController extends Controller
 {
-    protected ServersService $serverService;
-
-    public function __construct()
-    {
-        $this->serverService = new ServersService();
-    }
-
     public function ServersView()
     {
         $servers = Server::with('module')->select('id', 'name', 'hostname', 'ip_address', 'module_id')->get();
@@ -47,25 +40,20 @@ class ServersController extends Controller
 
     public function TestConnection(Request $request)
     {
-        $rules = $this->getValidationRules();
-        $validated = $request->validate($rules);
+        $validated = $request->validate($this->getValidationRules());
 
-        $module = Module::find($validated['module_id']);
-
-        if (!$module) {
-            return back()->with('error', 'Module not found');
-        }
+        $module = Module::findOrFail($validated['module_id']);
 
         $moduleService = new ModuleService();
         $module = $moduleService->createModule($module->type);
         $module->initialize($validated);
 
-        try {
-            $module->makeApiCall('/api/application/servers');
-            return back()->with('success', 'Connection successful');
-        } catch (Exception $e) {
-            return back()->with('error', 'Connection failed: ' . $e->getMessage());
+        $result = $module->testConnection();
+        if (!$result['success']) {
+            return back()->with('error', 'Connection failed: ' . $result['message']);
         }
+
+        return back()->with('success', 'Connection successful');
     }
 
     public function destroy(Server $server)
