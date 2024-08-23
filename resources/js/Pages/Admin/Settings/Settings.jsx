@@ -6,7 +6,7 @@ import { Link } from "@inertiajs/react"
 function SettingsLink({ path, title, description }) {
     return (
         <Link href={path} className="p-5 rounded-lg bg-surface hover:shadow-lg transition">
-            <h5>{title}</h5>
+            <h5 className="text-sm">{title}</h5>
             <p className="text-xs font-medium text-text-dark leading-6 mt-2 ">{description}</p>
         </Link>
     )

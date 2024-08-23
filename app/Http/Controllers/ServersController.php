@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
+use App\Http\Requests\ServerRequest;
 use Inertia\Inertia;
 use App\Models\Module;
 use App\Models\Server;
-use Illuminate\Http\Request;
 use App\Services\ModuleService;
-use App\Services\ServersService;
 
 class ServersController extends Controller
 {
@@ -28,19 +26,18 @@ class ServersController extends Controller
         ]);
     }
 
-    public function CreateServer(Request $request)
+    public function CreateServer(ServerRequest $request)
     {
-        $rules = $this->getValidationRules();
-        $validated = $request->validate($rules);
+        $validated = $request->validated();
 
         Server::create($validated);
 
         return to_route('admin.servers.index')->with('success', 'Server created successfully');
     }
 
-    public function TestConnection(Request $request)
+    public function TestConnection(ServerRequest $request)
     {
-        $validated = $request->validate($this->getValidationRules());
+        $validated = $request->validated();
 
         $module = Module::findOrFail($validated['module_id']);
 
@@ -61,22 +58,5 @@ class ServersController extends Controller
         $server->delete();
 
         return redirect()->back()->with('success', 'Server deleted successfully');
-    }
-
-    private function getValidationRules(): array
-    {
-        return [
-            'name' => 'required|min:3|string',
-            'hostname' => 'nullable|string',
-            'ip_address' => 'nullable|ip|required_without:hostname',
-            'monthly_cost' => 'nullable|numeric',
-            'max_accounts' => 'nullable|integer',
-            'port' => 'nullable|integer',
-            'nameservers' => 'nullable|json',
-            'module_id' => 'required|string',
-            'module_username' => 'nullable|string|required_without:module_api_token',
-            'module_password' => 'nullable|string|required_without:module_api_token',
-            'module_api_token' => 'nullable|string',
-        ];
     }
 }
