@@ -17,19 +17,30 @@ class PterodactylModule extends AbstractModule
         $this->serverInfo = $config;
     }
 
+    public function testConnection(): array
+    {
+        try {
+            $this->makeApiCall('/api/application/servers');
+            return ['success' => true, 'message' => ''];
+        } catch (Exception $e) {
+            Log::error("Connection test failed", ['error' => $e->getMessage()]);
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
+    }
+
     public function makeApiCall(string $endpoint, array $data = [])
     {
         try {
             $url = "http://{$this->serverInfo['ip_address']}:{$this->serverInfo['port']}{$endpoint}";
-    
+
             $response = Http::withHeaders([
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->serverInfo['module_api_token']
             ])->get($url);
-    
-            $response->throw(); 
-    
+
+            $response->throw();
+
             return $response->json();
         } catch (RequestException $e) {
 
@@ -38,7 +49,7 @@ class PterodactylModule extends AbstractModule
                 'status_code' => $e->response->status(),
                 'error_body' => $e->response->body()
             ]);
-    
+
             throw new Exception("An error occurred while making the API call: " . $e->getMessage());
         }
     }

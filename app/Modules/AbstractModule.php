@@ -12,4 +12,6 @@ abstract class AbstractModule
     }
 
     abstract public function makeApiCall(string $endpoint, array $data = []);
+
+    abstract public function testConnection(): array;
 }
