@@ -50,7 +50,7 @@ const AuthDropdown = () => {
                                 <Link>Profile</Link>
                             </li>
                             <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                <Link href="/admin/overview">
+                                <Link href="/admin/">
                                     Admin Panel
                                 </Link>
                             </li>
