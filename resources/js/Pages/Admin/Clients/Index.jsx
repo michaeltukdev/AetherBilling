@@ -31,7 +31,7 @@ export default function Overview() {
     return (
         <AdminLayout>
 
-            <GoBack href="/admin/overview" />
+            <GoBack href="/admin/" />
 
             <PageTitle title="Clients" description="A full list of all of your clients. Both with and without services" />
 

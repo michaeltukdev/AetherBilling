@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\ServersController;
+use App\Http\Controllers\SettingsController;
 
 Route::prefix('auth')->controller(Authentication::class)->group(function () {
     Route::middleware('guest')->group(function () {
@@ -38,6 +39,7 @@ Route::middleware('auth',)->group(function () {
 
         Route::prefix('settings')->group(function () {
             Route::inertia('/', 'Admin/Settings/Index')->name('admin.settings');
+            Route::get('/general', [SettingsController::class, 'GeneralView'])->name('admin.settings.general');
 
             Route::prefix('servers')->group(function () {
                 Route::get('/', [ServersController::class, 'ServersView'])->name('admin.servers.index');
