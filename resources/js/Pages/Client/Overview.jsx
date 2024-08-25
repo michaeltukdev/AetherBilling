@@ -1,7 +1,7 @@
 import React from "react"
-import { Link } from "@inertiajs/react"
-import Navigation from "../../Components/Client/Navigation"
-import { ServiceContainer, NewService } from "../../Components/Client/ServiceContainer"
+import Navigation from "../../Components/Client/Navigation/Navigation"
+import { LargeServiceContainer } from '../../Components/Client/Services/LargeServiceContainer'
+import { NewService } from '../../Components/Client/Services/NewService'
 
 export default function Overview() {
     return (
@@ -13,8 +13,7 @@ export default function Overview() {
                     <h3 className="text-lg font-medium mb-8">Your services</h3>
 
                     <div className="flex gap-8">
-                        <ServiceContainer />
-                        <ServiceContainer />
+                        <LargeServiceContainer />
                         <NewService />
                     </div>
                 </div>
