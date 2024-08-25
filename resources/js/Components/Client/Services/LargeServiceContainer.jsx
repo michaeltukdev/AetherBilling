@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 
 export const LargeServiceContainer = () => {
     return (
-        <Link className="rounded-lg bg-surface-accent p-8 block w-full max-w-[400px]">
+        <Link className="rounded-lg bg-surface-accent p-6 block w-full max-w-[400px]">
             <div className="flex items-center justify-between mb-16">
                 <h5 className="text-15">Budget Minecraft Hosting</h5>
                 <span className="text-15 font-medium text-accent">$5/month</span>

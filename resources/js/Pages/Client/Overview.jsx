@@ -10,7 +10,7 @@ export default function Overview() {
                 <Navigation />
 
                 <div className="container py-8">
-                    <h3 className="text-lg font-medium mb-8">Your services</h3>
+                    <h3 className="text-md font-medium mb-8">Your services</h3>
 
                     <div className="flex gap-8">
                         <LargeServiceContainer />
@@ -22,11 +22,11 @@ export default function Overview() {
             <main>
                 <div className="container mt-12 grid md:grid-cols-2 ">
                     <div>
-                        <h3 className="text-lg font-medium mb-8">Support Tickets</h3>
+                        <h3 className="text-md font-medium mb-8">Support Tickets</h3>
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-medium mb-8">Invoices</h3>
+                        <h3 className="text-md font-medium mb-8">Invoices</h3>
                     </div>
                 </div>
             </main>
