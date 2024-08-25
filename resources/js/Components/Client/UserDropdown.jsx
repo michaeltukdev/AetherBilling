@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, usePage } from '@inertiajs/react';
+import { hasPermission } from '../../Utils/hasPermission';
 
 const AuthDropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -49,11 +50,13 @@ const AuthDropdown = () => {
                             <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
                                 <Link>Profile</Link>
                             </li>
-                            <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                <Link href="/admin/">
-                                    Admin Panel
-                                </Link>
-                            </li>
+
+                            {hasPermission('access admin panel') && (
+                                <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
+                                    <Link href="/admin">Admin</Link>
+                                </li>
+                            )}
+                            
                             <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
                                 <Link href="/auth/logout">Logout</Link>
                             </li>
