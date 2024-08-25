@@ -39,14 +39,26 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
     });
 
     Route::prefix('settings')->group(function () {
+        
         Route::inertia('/', 'Admin/Settings/Index')->name('admin.settings');
+
         Route::get('/general', [SettingsController::class, 'GeneralView'])->name('admin.settings.general');
 
-        Route::prefix('servers')->group(function () {
+        Route::prefix('servers')->middleware('can:view servers')->group(function () {
+            
             Route::get('/', [ServersController::class, 'ServersView'])->name('admin.servers.index');
-            Route::get('create', [ServersController::class, 'CreateView'])->name('admin.settings.servers.create');
-            Route::post('create', [ServersController::class, 'CreateServer']);
-            Route::post('test-connection', [ServersController::class, 'TestConnection']);
+
+            Route::get('create', [ServersController::class, 'CreateView'])
+                ->name('admin.settings.servers.create')
+                ->middleware('can:create servers');
+
+            Route::post('create', [ServersController::class, 'CreateServer'])
+                ->name('admin.settings.servers.create')
+                ->middleware('can:create servers');
+
+            Route::post('test-connection', [ServersController::class, 'TestConnection'])
+                ->name('admin.settings.servers.test-connection')
+                ->middleware('can:create servers');
 
             Route::delete('{server}', [ServersController::class, 'destroy'])
                 ->name('admin.settings.servers.delete')
