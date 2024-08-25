@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Sidebar from '../Admin/Sidebar';
+import Sidebar from '../Admin/Sidebar/Sidebar';
 import { HiOutlineMenu } from "react-icons/hi";
 
 export default function AdminLayout({ children }) {
