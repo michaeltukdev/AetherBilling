@@ -31,7 +31,7 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
         return Inertia::render('Admin/Overview');
     })->name('admin.home');
 
-    Route::prefix('clients')->middleware('can: view users|manage users')->group(function () {
+    Route::prefix('clients')->middleware('permission:view users|manage users')->group(function () {
         Route::get('/', function () {
             $user = User::select('id', 'forename', 'surname', 'email', 'created_at')->get();
             return Inertia::render('Admin/Clients/Index', ['clients' => $user]);
@@ -39,38 +39,38 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
     });
 
     Route::prefix('settings')->group(function () {
-        
+
         Route::inertia('/', 'Admin/Settings/Index')->name('admin.settings');
 
         Route::get('/general', [SettingsController::class, 'GeneralView'])->name('admin.settings.general');
 
-        Route::prefix('servers')->middleware('can:view servers')->group(function () {
-            
+        Route::prefix('servers')->middleware('permission:view servers')->group(function () {
+
             Route::get('/', [ServersController::class, 'ServersView'])->name('admin.servers.index');
 
             Route::get('create', [ServersController::class, 'CreateView'])
                 ->name('admin.settings.servers.create')
-                ->middleware('can:create servers');
+                ->middleware('permission:create servers');
 
             Route::post('create', [ServersController::class, 'CreateServer'])
                 ->name('admin.settings.servers.create')
-                ->middleware('can:create servers');
+                ->middleware('permission:create servers');
 
             Route::post('test-connection', [ServersController::class, 'TestConnection'])
                 ->name('admin.settings.servers.test-connection')
-                ->middleware('can:create servers');
+                ->middleware('permission:create servers');
 
             Route::delete('{server}', [ServersController::class, 'destroy'])
                 ->name('admin.settings.servers.delete')
-                ->middleware('can:delete servers');
+                ->middleware('permission:delete servers');
 
             Route::get('{server}', [ServersController::class, 'updateView'])
                 ->name('admin.settings.servers.update')
-                ->middleware('can:edit servers');
+                ->middleware('permission:edit servers');
 
             Route::put('/{server}', [ServersController::class, 'update'])
                 ->name('admin.settings.servers.update')
-                ->middleware('can:edit servers');
+                ->middleware('permission:edit servers');
         });
     });
 });
