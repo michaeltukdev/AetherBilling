@@ -43,6 +43,15 @@ class ServersController extends Controller
         return to_route('admin.servers.index')->with('success', 'Server created successfully');
     }
 
+    public function update(ServerRequest $request, Server $server)
+    {
+        $validated = $request->validated();
+
+        $server->update($validated);
+
+        return to_route('admin.servers.index')->with('success', 'Server updated successfully');
+    }
+
     public function TestConnection(ServerRequest $request)
     {
         $validated = $request->validated();

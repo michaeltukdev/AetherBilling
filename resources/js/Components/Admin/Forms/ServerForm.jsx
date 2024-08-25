@@ -34,9 +34,13 @@ export default function ServerForm({ isUpdate = false, initialData = {} }) {
 
     function handleSubmit(e) {
         e.preventDefault()
+
         if (canSubmit) {
-            const url = isUpdate ? '/admin/settings/servers/update' : '/admin/settings/servers/create';
-            router.post(url, data)
+            if (isUpdate) {
+                router.put(`/admin/settings/servers/${initialData.id}`, data)
+            } else {
+                router.post('/admin/settings/servers', data)
+            }
         }
     }
 
@@ -61,7 +65,6 @@ export default function ServerForm({ isUpdate = false, initialData = {} }) {
         setData(field, value)
         setCanSubmit(false)
     }
-
     return (
         <AdminLayout>
             <FlashMessage message={flash.success ?? flash.error} type={flash.success ? 'success' : 'error'} onClose={() => { }} />

@@ -2,6 +2,7 @@ import React from "react"
 import AdminLayout from "../../../Components/Layouts/Admin"
 import GoBack from "../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../Components/Admin/PageTitle"
+import { useForm } from '@inertiajs/react';
 
 export default function General() {
     return (

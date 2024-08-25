@@ -47,8 +47,18 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
             Route::get('create', [ServersController::class, 'CreateView'])->name('admin.settings.servers.create');
             Route::post('create', [ServersController::class, 'CreateServer']);
             Route::post('test-connection', [ServersController::class, 'TestConnection']);
-            Route::delete('{server}', [ServersController::class, 'destroy'])->name('admin.settings.servers.delete');
-            Route::get('{server}', [ServersController::class, 'updateView'])->name('admin.settings.servers.update');
+
+            Route::delete('{server}', [ServersController::class, 'destroy'])
+                ->name('admin.settings.servers.delete')
+                ->middleware('can:delete servers');
+
+            Route::get('{server}', [ServersController::class, 'updateView'])
+                ->name('admin.settings.servers.update')
+                ->middleware('can:edit servers');
+
+            Route::put('/{server}', [ServersController::class, 'update'])
+                ->name('admin.settings.servers.update')
+                ->middleware('can:edit servers');
         });
     });
 });

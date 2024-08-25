@@ -44,21 +44,21 @@ const UserDropdown = () => {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.1 }}
-                    >
+                        transition={{ duration: 0.1 }} >
+                            
                         <ul className="py-1">
-                            <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                <Link>Profile</Link>
+                            <li>
+                                <Link className="block px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">Profile</Link>
                             </li>
 
                             {hasPermission('access admin panel') && (
-                                <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                    <Link href="/admin">Admin</Link>
+                                <li>
+                                    <Link href="/admin" className="block px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">Admin</Link>
                                 </li>
                             )}
-                            
-                            <li className="px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">
-                                <Link href="/auth/logout">Logout</Link>
+
+                            <li>
+                                <Link href="/auth/logout" className="block px-4 py-2 text-sm hover:bg-input-border transition cursor-pointer">Logout</Link>
                             </li>
                         </ul>
                     </motion.div>
