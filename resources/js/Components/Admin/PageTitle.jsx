@@ -1,5 +1,6 @@
 import React from 'react';
 import CreateLink from '../ui/Buttons/CreateButton';
+import { hasPermission } from '../../Utils/hasPermission';
 
 const PageTitle = ({ title, description, createLinkProps }) => {
   return (
@@ -11,7 +12,7 @@ const PageTitle = ({ title, description, createLinkProps }) => {
         )}
       </div>
 
-      {createLinkProps && (
+      {createLinkProps && (!createLinkProps.permission || hasPermission(createLinkProps.permission)) && (
         <CreateLink text={createLinkProps.text} href={createLinkProps.href} />
       )}
     </div>

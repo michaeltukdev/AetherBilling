@@ -5,6 +5,7 @@ import GoBack from "../../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../../Components/Admin/PageTitle"
 import Table from "../../../../Components/Tables/Table"
 import FlashMessage from "../../../../Components/FlashMessage"
+import { hasPermission } from "../../../../Utils/hasPermission"
 
 const columns = [
   { accessorKey: 'id', header: 'ID' },
@@ -17,9 +18,13 @@ const columns = [
     header: 'Actions',
     cell: ({ row }) => (
       <div className="flex gap-2">
-        <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
+        {hasPermission('edit servers') && (
+          <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
+        )}
 
-        <button onClick={() => router.delete(`/admin/settings/servers/${row.original.id}`)} className="text-red-300 hover:text-red-500"> Delete </button>
+        {hasPermission('delete servers') && (
+          <button onClick={() => router.delete(`/admin/settings/servers/${row.original.id}`)} className="text-red-300 hover:text-red-500"> Delete </button>
+        )}
       </div>
     )
   }
@@ -31,10 +36,10 @@ export default function Servers() {
   return (
     <AdminLayout>
       <FlashMessage message={flash.success ?? flash.error} type={flash.success ? 'success' : 'error'} />
-      
+
       <GoBack href="/admin/settings" />
 
-      <PageTitle title="Servers" description="Manage your servers here" createLinkProps={{ text: "Add server", href: "servers/create" }} />
+      <PageTitle title="Servers" description="Manage your servers here" createLinkProps={{ text: "Add server", href: "servers/create", permission: "create servers" }} />
 
       <Table columns={columns} data={servers} />
     </AdminLayout>
