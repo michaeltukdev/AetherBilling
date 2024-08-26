@@ -39,7 +39,7 @@ export default function ServerForm({ isUpdate = false, initialData = {} }) {
             if (isUpdate) {
                 router.put(`/admin/settings/servers/${initialData.id}`, data)
             } else {
-                router.post('/admin/settings/servers', data)
+                router.post('/admin/settings/servers/create', data)
             }
         }
     }

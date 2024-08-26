@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { usePage, router, Link } from "@inertiajs/react"
 import AdminLayout from "../../../../Components/Layouts/Admin"
 import GoBack from "../../../../Components/ui/Buttons/GoBack"
@@ -6,6 +6,7 @@ import PageTitle from "../../../../Components/Admin/PageTitle"
 import Table from "../../../../Components/Tables/Table"
 import FlashMessage from "../../../../Components/FlashMessage"
 import { hasPermission } from "../../../../Utils/hasPermission"
+import DeleteConfirmationModal from "../../../../Components/Modals/DeleteConfirmationModal"
 
 const columns = [
   { accessorKey: 'id', header: 'ID' },
@@ -16,17 +17,32 @@ const columns = [
   {
     accessorKey: 'actions',
     header: 'Actions',
-    cell: ({ row }) => (
-      <div className="flex gap-2">
-        {hasPermission('edit servers') && (
-          <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
-        )}
+    cell: ({ row }) => {
+      const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
 
-        {hasPermission('delete servers') && (
-          <button onClick={() => router.delete(`/admin/settings/servers/${row.original.id}`)} className="text-red-300 hover:text-red-500"> Delete </button>
-        )}
-      </div>
-    )
+      return (
+        <div className="flex gap-2">
+          {hasPermission('edit servers') && (
+            <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
+          )}
+
+          {hasPermission('delete servers') && (
+            <>
+              <button onClick={() => setIsDeleteModalOpen(true)} className="text-red-300 hover:text-red-500">
+                Delete
+              </button>
+              <DeleteConfirmationModal
+                isOpen={isDeleteModalOpen}
+                onClose={() => setIsDeleteModalOpen(false)}
+                onConfirm={() => router.delete(`/admin/settings/servers/${row.original.id}`)}
+                itemType="server"
+                itemName={row.original.name}
+              />
+            </>
+          )}
+        </div>
+      )
+    }
   }
 ];
 
