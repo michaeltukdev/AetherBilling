@@ -14,7 +14,8 @@ const navItems = [
             { label: 'All Clients', href: '/admin/clients' },
             { label: 'Add New Client', href: '/clients/new' },
             { label: 'Client Groups', href: '/client-groups' },
-        ]
+        ],
+        permission: ['view users', 'manage users']
     },
     {
         icon: HiOutlineCreditCard,
@@ -22,7 +23,7 @@ const navItems = [
         href: '/admin/billing',
         dropdown: [
             { label: 'Client Groups', href: '/client-groups' },
-        ]
+        ],
     },
     {
         icon: HiOutlineSupport,

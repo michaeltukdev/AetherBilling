@@ -6,9 +6,12 @@ import navItems from '../../../Data/adminLinks';
 import SidebarDropdown from './SidebarDropdown';
 import SidebarItem from './SidebarItem';
 import UserBar from './UserBar';
+import { hasPermission } from '../../../Utils/hasPermission';
 
 const Sidebar = ({ isMobile, setSidebarOpen }) => {
     const [activeDropdown, setActiveDropdown] = useState(null);
+
+    const filteredNavItems = navItems.filter(item => hasPermission(item.permission) || !item.permission);
 
     return (
         <motion.aside initial={{ x: isMobile ? "-100%" : 0 }} animate={{ x: 0 }} exit={{ x: "-100%" }} transition={{ type: "spring", bounce: 0, duration: 0.4 }} className="fixed inset-y-0 left-0 z-50 w-[280px] bg-surface md:relative px-4 flex flex-col">
@@ -23,7 +26,7 @@ const Sidebar = ({ isMobile, setSidebarOpen }) => {
                 <MainInput className='w-full mt-8' placeholder="Search..." />
 
                 <ul className="space-y-4 mt-5 text-15 font-medium">
-                    {navItems.map((item, index) => (
+                    {filteredNavItems.map((item, index) => (
                         <li key={index}>
                             {item.dropdown ? (
                                 <SidebarDropdown {...item} isActive={activeDropdown === item.label} setActiveDropdown={setActiveDropdown} />
