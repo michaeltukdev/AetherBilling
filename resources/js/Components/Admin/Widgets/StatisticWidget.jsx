@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function OverviewWidget({ count, label, dateRange, numberColor }) {
+export default function StatisticWidget({ count, label, dateRange, numberColor }) {
     return (
         <div className="bg-surface rounded-lg">
             <div className="p-5">
