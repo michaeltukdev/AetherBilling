@@ -28,7 +28,11 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->middleware('permission:access admin panel')->group(function () {
     Route::get('/', function () {
-        return Inertia::render('Admin/Overview');
+        $users = User::select('id', 'forename', 'surname', 'email', 'created_at')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        return Inertia::render('Admin/Overview', [
+            'users' => $users,
+        ]);
     })->name('admin.home');
 
     Route::prefix('clients')->middleware('permission:view users|manage users')->group(function () {
