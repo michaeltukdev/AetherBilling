@@ -1,10 +1,8 @@
 import React from 'react';
-import CreateLink from '../ui/Buttons/CreateButton';
-import { hasPermission } from '../../Utils/hasPermission';
 
-const PageTitle = ({ title, description, createLinkProps }) => {
+const PageTitle = ({ title, description, children }) => {
   return (
-    <div className="flex items-end justify-between">
+    <div className="md:flex items-end justify-between">
       <div>
         <h1 className="text-xl font-medium">{title}</h1>
         {description && (
@@ -12,9 +10,9 @@ const PageTitle = ({ title, description, createLinkProps }) => {
         )}
       </div>
 
-      {createLinkProps && (!createLinkProps.permission || hasPermission(createLinkProps.permission)) && (
-        <CreateLink text={createLinkProps.text} href={createLinkProps.href} />
-      )}
+      <div className='flex items-center gap-4 mt-6 md:mt-0'>
+        {children}
+      </div>
     </div>
   );
 };

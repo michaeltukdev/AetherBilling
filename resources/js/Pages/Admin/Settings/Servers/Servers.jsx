@@ -7,6 +7,7 @@ import Table from "../../../../Components/Tables/Table"
 import FlashMessage from "../../../../Components/FlashMessage"
 import { hasPermission } from "../../../../Utils/hasPermission"
 import DeleteConfirmationModal from "../../../../Components/Modals/DeleteConfirmationModal"
+import CreateButton from "../../../../Components/ui/Buttons/CreateButton"
 
 const columns = [
   { accessorKey: 'id', header: 'ID' },
@@ -55,7 +56,9 @@ export default function Servers() {
 
       <GoBack href="/admin/settings" />
 
-      <PageTitle title="Servers" description="Manage your servers here" createLinkProps={{ text: "Add server", href: "servers/create", permission: "create servers" }} />
+      <PageTitle title="Servers" description="Manage your servers here">
+        {hasPermission('create servers') && <CreateButton text="Add Server" href="/admin/settings/servers/create" />}
+      </PageTitle>
 
       <Table columns={columns} data={servers} />
     </AdminLayout>

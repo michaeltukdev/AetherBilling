@@ -10,8 +10,8 @@ export default function Settings() {
 
     return (
         <AdminLayout>
-            <PageTitle>Settings</PageTitle>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <PageTitle title="Settings" description="Manage all of your sites settings from here." />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                 {filteredSettings.map((setting, index) => (
                     <SettingsLink key={index} {...setting} />
                 ))}
