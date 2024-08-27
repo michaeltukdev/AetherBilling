@@ -16,5 +16,11 @@ export const SettingsInfo = [
         'description': 'Manage the roles and permissions of your users.',
         'path': '/admin/settings/roles',
         'permission': ['view roles', 'manage roles'],
+    },
+    {
+        'title': 'Products',
+        'description': 'Manage your products and services.',
+        'path': '/admin/settings/products',
+        // 'permission': 'view products',
     }
 ];

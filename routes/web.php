@@ -4,6 +4,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ServersController;
 use App\Http\Controllers\SettingsController;
 
@@ -47,6 +48,22 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
         Route::inertia('/', 'Admin/Settings/Index')->name('admin.settings');
 
         Route::get('/general', [SettingsController::class, 'GeneralView'])->name('admin.settings.general');
+
+        Route::prefix('products')->group(function () {
+            Route::get('/', [ProductsController::class, 'index'])->name('admin.settings.products.index');
+            
+            // Create product groups
+
+            // Update product groups
+
+            // Delete product groups
+
+            // Create products 
+
+            // Update products
+
+            // Delete products
+        });
 
         Route::prefix('servers')->middleware('permission:view servers')->group(function () {
 
