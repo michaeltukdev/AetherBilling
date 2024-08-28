@@ -32,6 +32,9 @@ class Server extends Model
         'nameservers' => 'array',
         'is_secure' => 'boolean',
         'port' => 'integer',
+        'module_username' => 'encrypted',
+        'module_password' => 'encrypted',
+        'module_api_token' => 'encrypted',
     ];
 
     public function module()
