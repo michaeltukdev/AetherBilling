@@ -10,7 +10,7 @@ use App\Services\ModuleService;
 
 class ServersController extends Controller
 {
-    public function ServersView()
+    public function index()
     {
         $servers = Server::with('module')->select('id', 'name', 'hostname', 'ip_address', 'module_id')->get();
 
@@ -19,28 +19,35 @@ class ServersController extends Controller
         ]);
     }
 
-    public function CreateView()
+    public function create()
     {
         return Inertia::render('Admin/Settings/Servers/Create', [
             'modules' => Module::all()
         ]);
     }
 
-    public function updateView(Server $server)
-    {
-        return Inertia::render('Admin/Settings/Servers/Update', [
-            'server' => $server,
-            'modules' => Module::all()
-        ]);
-    }
-
-    public function CreateServer(ServerRequest $request)
+    public function store(ServerRequest $request)
     {
         $validated = $request->validated();
 
         Server::create($validated);
 
-        return to_route('admin.servers.index')->with('success', 'Server created successfully');
+        return to_route('servers.index')->with('success', 'Server created successfully');
+    }
+
+    public function destroy(Server $server)
+    {
+        $server->delete();
+
+        return redirect()->back()->with('success', 'Server deleted successfully');
+    }
+
+    public function edit(Server $server)
+    {
+        return Inertia::render('Admin/Settings/Servers/Update', [
+            'server' => $server,
+            'modules' => Module::all()
+        ]);
     }
 
     public function update(ServerRequest $request, Server $server)
@@ -49,10 +56,10 @@ class ServersController extends Controller
 
         $server->update($validated);
 
-        return to_route('admin.servers.index')->with('success', 'Server updated successfully');
+        return to_route('servers.index')->with('success', 'Server updated successfully');
     }
 
-    public function TestConnection(ServerRequest $request)
+    public function testConnection(ServerRequest $request)
     {
         $validated = $request->validated();
 
@@ -68,12 +75,5 @@ class ServersController extends Controller
         }
 
         return back()->with('success', 'Connection successful');
-    }
-
-    public function destroy(Server $server)
-    {
-        $server->delete();
-
-        return redirect()->back()->with('success', 'Server deleted successfully');
     }
 }

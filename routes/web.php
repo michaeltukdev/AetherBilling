@@ -51,7 +51,7 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
 
         Route::prefix('products')->group(function () {
             Route::get('/', [ProductsController::class, 'index'])->name('admin.settings.products.index');
-            
+
             // Create product groups
 
             // Update product groups
@@ -65,34 +65,11 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
             // Delete products
         });
 
-        Route::prefix('servers')->middleware('permission:view servers')->group(function () {
+        Route::resource('servers', ServersController::class)->middleware('permission:view servers');
 
-            Route::get('/', [ServersController::class, 'ServersView'])->name('admin.servers.index');
-
-            Route::get('create', [ServersController::class, 'CreateView'])
-                ->name('admin.settings.servers.create')
-                ->middleware('permission:create servers');
-
-            Route::post('create', [ServersController::class, 'CreateServer'])
-                ->name('admin.settings.servers.create')
-                ->middleware('permission:create servers');
-
-            Route::post('test-connection', [ServersController::class, 'TestConnection'])
-                ->name('admin.settings.servers.test-connection')
-                ->middleware('permission:create servers');
-
-            Route::delete('{server}', [ServersController::class, 'destroy'])
-                ->name('admin.settings.servers.delete')
-                ->middleware('permission:delete servers');
-
-            Route::get('{server}', [ServersController::class, 'updateView'])
-                ->name('admin.settings.servers.update')
-                ->middleware('permission:edit servers');
-
-            Route::put('/{server}', [ServersController::class, 'update'])
-                ->name('admin.settings.servers.update')
-                ->middleware('permission:edit servers');
-        });
+        Route::post('/servers/test-connection', [ServersController::class, 'testConnection'])
+            ->name('admin.settings.servers.test-connection')
+            ->middleware('permission:create servers');
     });
 });
 

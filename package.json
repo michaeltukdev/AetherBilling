@@ -1,32 +1,42 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@types/react": "^18.3.4",
-        "autoprefixer": "^10.4.20",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.40",
-        "tailwindcss": "^3.4.7",
-        "vite": "^5.0"
-    },
-    "dependencies": {
-        "@floating-ui/react": "^0.26.22",
-        "@inertiajs/react": "^1.2.0",
-        "@tanstack/react-table": "^8.20.1",
-        "country-region-data": "^3.0.0",
-        "framer-motion": "^11.3.21",
-        "lodash.debounce": "^4.0.8",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "react-icons": "^5.2.1",
-        "react-responsive-carousel": "^3.2.23",
-        "react-slick": "^0.30.2",
-        "react-snap-carousel": "^0.4.0",
-        "slick-carousel": "^1.8.1"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "postinstall": "patch-package"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.4",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.6.4",
+    "jscodeshift": "^0.15.2",
+    "laravel-vite-plugin": "^1.0",
+    "postcss": "^8.4.40",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.10",
+    "vite": "^5.0"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.22",
+    "@gluestack-ui/nativewind-utils": "^1.0.23",
+    "@gluestack-ui/overlay": "^0.1.15",
+    "@gluestack-ui/toast": "^1.0.7",
+    "@inertiajs/react": "^1.2.0",
+    "@tanstack/react-table": "^8.20.1",
+    "country-region-data": "^3.0.0",
+    "framer-motion": "^11.3.21",
+    "lodash.debounce": "^4.0.8",
+    "lucide-react": "^0.436.0",
+    "nativewind": "^4.0.36",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
+    "react-native-svg": "^13.4.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-slick": "^0.30.2",
+    "react-snap-carousel": "^0.4.0",
+    "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^2.5.2"
+  }
 }

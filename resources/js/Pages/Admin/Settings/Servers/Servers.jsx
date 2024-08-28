@@ -24,7 +24,7 @@ const columns = [
       return (
         <div className="flex gap-2">
           {hasPermission('edit servers') && (
-            <Link href={`/admin/settings/servers/${row.original.id}`}>Edit</Link>
+            <Link href={`/admin/settings/servers/${row.original.id}/edit`}>Edit</Link>
           )}
 
           {hasPermission('delete servers') && (
