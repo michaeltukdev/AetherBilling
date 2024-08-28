@@ -26,16 +26,16 @@ const columns = [
 ];
 
 export default function Overview() {
-    const { clients } = usePage().props;
+    const { users } = usePage().props;
 
     return (
         <AdminLayout>
 
             <GoBack href="/admin/" />
 
-            <PageTitle title="Clients" description="A full list of all of your clients. Both with and without services" />
+            <PageTitle title="Users" description="A full list of all of your users, you can filter them to see which ones have services." />
 
-            <Table columns={columns} data={clients} />
+            <Table columns={columns} data={users} />
         </AdminLayout>
     )
 }

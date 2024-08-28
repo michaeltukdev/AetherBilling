@@ -4,9 +4,10 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Authentication;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ServersController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UsersController;
 
 Route::prefix('auth')->controller(Authentication::class)->group(function () {
     Route::middleware('guest')->group(function () {
@@ -36,12 +37,8 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
         ]);
     })->name('admin.home');
 
-    Route::prefix('clients')->middleware('permission:view users|manage users')->group(function () {
-        Route::get('/', function () {
-            $user = User::select('id', 'forename', 'surname', 'email', 'created_at')->get();
-            return Inertia::render('Admin/Clients/Index', ['clients' => $user]);
-        })->name('admin.clients');
-    });
+    Route::resource('users', UsersController::class)->middleware('permission:view users|manage users')
+        ->except('create');
 
     Route::prefix('settings')->group(function () {
 

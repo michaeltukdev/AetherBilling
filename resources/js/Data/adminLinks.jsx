@@ -8,10 +8,10 @@ const navItems = [
     },
     {
         icon: HiOutlineUsers,
-        label: 'Clients',
-        href: '/clients',
+        label: 'Users',
+        href: '/users',
         dropdown: [
-            { label: 'All Clients', href: '/admin/clients' },
+            { label: 'All Users', href: '/admin/users' },
             { label: 'Add New Client', href: '/clients/new' },
             { label: 'Client Groups', href: '/client-groups' },
         ],
