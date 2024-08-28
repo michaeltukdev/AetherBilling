@@ -3,7 +3,7 @@ import AdminLayout from "../../Components/Layouts/Admin"
 import StatisticWidget from "../../Components/Admin/Widgets/StatisticWidget"
 import InfoWidget from "../../Components/Admin/Widgets/InfoWidget"
 import { usePage, Link } from "@inertiajs/react"
-import { formatDate } from "../../Utils/FormatDate"
+import { formatDate } from "../../utils/FormatDate"
 
 export default function Overview() {
     const { users } = usePage().props

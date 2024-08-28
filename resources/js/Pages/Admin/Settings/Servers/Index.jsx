@@ -5,7 +5,7 @@ import GoBack from "../../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../../Components/Admin/PageTitle"
 import Table from "../../../../Components/Tables/Table"
 import FlashMessage from "../../../../Components/FlashMessage"
-import { hasPermission } from "../../../../Utils/hasPermission"
+import { hasPermission } from "../../../../utils/hasPermission"
 import DeleteConfirmationModal from "../../../../Components/Modals/DeleteConfirmationModal"
 import CreateButton from "../../../../Components/ui/Buttons/CreateButton"
 

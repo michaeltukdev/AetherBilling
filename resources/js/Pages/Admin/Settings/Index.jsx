@@ -3,7 +3,7 @@ import PageTitle from "../../../Components/Admin/PageTitle"
 import AdminLayout from "../../../Components/Layouts/Admin"
 import SettingsLink from "../../../Components/Admin/Settings/SettingsLink"
 import { SettingsInfo } from "../../../Data/Settings/settingsInfo"
-import { hasPermission } from "../../../Utils/hasPermission"
+import { hasPermission } from "../../../utils/hasPermission"
 
 export default function Settings() {
     const filteredSettings = SettingsInfo.filter(item => hasPermission(item.permission) || !item.permission);

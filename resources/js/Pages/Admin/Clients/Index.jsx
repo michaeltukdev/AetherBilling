@@ -4,7 +4,7 @@ import AdminLayout from "../../../Components/Layouts/Admin"
 import GoBack from "../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../Components/Admin/PageTitle"
 import Table from "../../../Components/Tables/Table"
-import { formatDate } from "../../../Utils/FormatDate"
+import { formatDate } from "../../../utils/FormatDate"
 
 const columns = [
     { accessorKey: 'id', header: 'ID' },

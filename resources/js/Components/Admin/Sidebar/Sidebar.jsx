@@ -6,7 +6,7 @@ import navItems from '../../../Data/adminLinks';
 import SidebarDropdown from './SidebarDropdown';
 import SidebarItem from './SidebarItem';
 import UserBar from './UserBar';
-import { hasPermission } from '../../../Utils/hasPermission';
+import { hasPermission } from '../../../utils/hasPermission';
 
 const Sidebar = ({ isMobile, setSidebarOpen }) => {
     const [activeDropdown, setActiveDropdown] = useState(null);

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, usePage } from '@inertiajs/react';
-import { hasPermission } from '../../../Utils/hasPermission';
+import { hasPermission } from '../../../utils/hasPermission';
 
 const UserDropdown = () => {
     const [isOpen, setIsOpen] = useState(false);
