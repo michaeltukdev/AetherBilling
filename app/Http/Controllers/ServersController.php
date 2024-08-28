@@ -14,7 +14,7 @@ class ServersController extends Controller
     {
         $servers = Server::with('module')->select('id', 'name', 'hostname', 'ip_address', 'module_id')->get();
 
-        return Inertia::render('Admin/Settings/Servers/Servers', [
+        return Inertia::render('Admin/Settings/Servers/Index', [
             'servers' => $servers
         ]);
     }
@@ -44,7 +44,7 @@ class ServersController extends Controller
 
     public function edit(Server $server)
     {
-        return Inertia::render('Admin/Settings/Servers/Update', [
+        return Inertia::render('Admin/Settings/Servers/Edit', [
             'server' => $server,
             'modules' => Module::all()
         ]);

@@ -31,7 +31,7 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
     Route::get('/', function () {
         $users = User::select('id', 'forename', 'surname', 'email', 'created_at')->orderBy('created_at', 'desc')->limit(5)->get();
 
-        return Inertia::render('Admin/Overview', [
+        return Inertia::render('Admin/Index', [
             'users' => $users,
         ]);
     })->name('admin.home');
@@ -68,8 +68,7 @@ Route::prefix('admin')->middleware('permission:access admin panel')->group(funct
         Route::resource('servers', ServersController::class)->middleware('permission:view servers');
 
         Route::post('/servers/test-connection', [ServersController::class, 'testConnection'])
-            ->name('admin.settings.servers.test-connection')
-            ->middleware('permission:create servers');
+            ->name('admin.settings.servers.test-connection')->middleware('permission:create servers');
     });
 });
 
