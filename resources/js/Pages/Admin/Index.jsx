@@ -21,7 +21,7 @@ export default function Overview() {
             <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-8 mt-8">
                 <InfoWidget label="Recent Users" viewAll="/admin/clients">
                     {users.map(user => (
-                        <Link className="block">
+                        <Link href={`/admin/users/${user.id}`} className="block">
                             <p className="text-sm font-medium">{user.forename + ' ' + user.surname}</p>
 
                             <div className="flex justify-between mt-1">

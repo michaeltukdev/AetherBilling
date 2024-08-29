@@ -16,4 +16,11 @@ class UsersController extends Controller
             'users' => $users
         ]);
     }
+
+    public function show(User $user)
+    {
+        return Inertia::render('Admin/Users/Show', [
+            'user' => $user
+        ]);
+    }
 }

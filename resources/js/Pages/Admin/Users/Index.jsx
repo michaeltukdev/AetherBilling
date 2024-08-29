@@ -1,5 +1,5 @@
 import React from "react"
-import { usePage } from "@inertiajs/react"
+import { usePage, Link } from "@inertiajs/react"
 import AdminLayout from "../../../Components/Layouts/Admin"
 import GoBack from "../../../Components/ui/Buttons/GoBack"
 import PageTitle from "../../../Components/Admin/PageTitle"
@@ -20,7 +20,9 @@ const columns = [
         accessorKey: 'actions',
         header: 'Actions',
         cell: ({ row }) => (
-            <div className="flex gap-2"></div>
+            <div className="flex gap-2">
+                <Link href={`/admin/users/${row.original.id}`} className="btn btn-sm btn-primary">View</Link>
+            </div>
         )
     }
 ];
