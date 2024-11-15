@@ -7,9 +7,3 @@ An open source and completely free billing system for hosting providers. Serving
 Aether is currently  in full-development and is relatively rough.
 
 I would currently appreciate as much help as possible so you are free to make pull requests and help out.
-
-## Contact
-
-If you are interested in this project or just want to discuss with me about it; 
-
-Reach out to me on Discord (michaelt.uk) or Email (mikey.d.tilley@gmail.com)
